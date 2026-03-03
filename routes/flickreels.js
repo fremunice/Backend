@@ -25,9 +25,9 @@ const BLACKLIST_FILE = path.join(process.cwd(), 'blacklist.json');
 
 // --- DAFTAR IP YANG DIKECUALIKAN (WHITELIST) ---
 // Masukkan IP servermu atau IP admin di sini agar tidak kena limit
-const WHITELISTED_IPS = [
-    '104.36.20.178', '72.62.120.111'
-];
+const WHITELISTED_IPS = process.env.WHITELIST_IPS
+  ? process.env.WHITELIST_IPS.split(',')
+  : [];
 
 // Pastikan file blacklist.json ada
 if (!fs.existsSync(BLACKLIST_FILE)) {
